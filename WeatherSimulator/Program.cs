@@ -4,7 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Write("Enter the number of days to simulate: ");
+            var days = int.Parse(Console.ReadLine());
+
+            int[] temperatures = new int[days];
+            string[] conditions = { "Sunny", "Rainy", "Cloudy", "Snowy" };
+            string[] weatherConditions = new string[days];
+
         }
     }
 }
