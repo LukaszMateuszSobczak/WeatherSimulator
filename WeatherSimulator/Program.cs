@@ -19,22 +19,47 @@
                 if (temperatures[i] >= 2)
                 {
                     weatherConditions[i] = conditions[random.Next(0, conditions.Length - 2)];
-                } else
+                }
+                else
                 {
                     weatherConditions[i] = conditions[random.Next(0, conditions.Length - 1)];
                 }
             }
 
-            foreach (int temp in temperatures)
+            Console.WriteLine($"Average temperature is: {AverageTemperature(temperatures)}");
+
+            LogTemperatures(temperatures);
+            LogWetherCondition(weatherConditions);
+            Console.WriteLine($"Te max temperature was: {temperatures.Max()}");
+            Console.WriteLine($"The min temperature was: {temperatures.Min()}");
+
+        }
+
+        static double AverageTemperature(int[] temperatures)
+        {
+            int sum = 0;
+            foreach (int temperature in temperatures)
             {
-                Console.WriteLine(temp);
+                sum += temperature;
             }
 
-            foreach(string weatherCondition in weatherConditions)
-            {
-                Console.WriteLine(weatherCondition);
-            }
+            return (double)sum / temperatures.Length;
+        }
 
+        static void LogTemperatures(int[] temperatures)
+        {
+            foreach (int temperature in temperatures)
+            {
+                Console.WriteLine($"Temperature: {temperature} celsius");
+            }
+        }
+
+        static void LogWetherCondition(string[] weatherCondition)
+        {
+            foreach(string condition in weatherCondition)
+            {
+                Console.WriteLine($"Weather: {condition}");
+            }
         }
     }
 }
