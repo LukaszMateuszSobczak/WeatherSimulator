@@ -34,28 +34,53 @@
             Console.WriteLine($"Te max temperature was: {temperatures.Max()}");
             Console.WriteLine($"The min temperature by my method is: {MinTemperature(temperatures)}");
             Console.WriteLine($"The min temperature was: {temperatures.Min()}");
+            Console.WriteLine($"Most common condition was: {MostCommonCondition(weatherConditions)}");
 
+        }
+
+        static string MostCommonCondition(string[] conditions)
+        {
+            int count = 0;
+            string mostCommon = conditions[0];
+
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                int tempCount = 0;
+                for (int j = 0; j < conditions.Length; j++)
+                {
+                    if (conditions[i] == conditions[j])
+                    {
+                        tempCount++;
+                    }
+                }
+                if (count < tempCount)
+                {
+                    count = tempCount;
+                    mostCommon = conditions[i];
+                }
+            }
+            return mostCommon;
         }
 
         static int MinTemperature(int[] tempartures)
         {
-            int tmp = 0;
+            int min = tempartures[0];
 
             foreach (int temperature in tempartures)
             {
-                if (tmp > temperature) tmp = temperature;
+                if (min > temperature) min = temperature;
             }
-            return tmp;
+            return min;
         }
 
         static int MaxTemperature(int[] tempartures)
         {
-            int tmp = 0;
+            int max = tempartures[0];
             foreach (int temperature in tempartures)
             {
-                if (tmp < temperature) tmp = temperature;
+                if (max < temperature) max = temperature;
             }
-            return tmp;
+            return max;
         }
         static double AverageTemperature(int[] temperatures)
         {
