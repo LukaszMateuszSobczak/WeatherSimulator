@@ -30,11 +30,33 @@
 
             LogTemperatures(temperatures);
             LogWetherCondition(weatherConditions);
+            Console.WriteLine($"The max temperature by my method is: {MaxTemperature(temperatures)}");
             Console.WriteLine($"Te max temperature was: {temperatures.Max()}");
+            Console.WriteLine($"The min temperature by my method is: {MinTemperature(temperatures)}");
             Console.WriteLine($"The min temperature was: {temperatures.Min()}");
 
         }
 
+        static int MinTemperature(int[] tempartures)
+        {
+            int tmp = 0;
+
+            foreach (int temperature in tempartures)
+            {
+                if (tmp > temperature) tmp = temperature;
+            }
+            return tmp;
+        }
+
+        static int MaxTemperature(int[] tempartures)
+        {
+            int tmp = 0;
+            foreach (int temperature in tempartures)
+            {
+                if (tmp < temperature) tmp = temperature;
+            }
+            return tmp;
+        }
         static double AverageTemperature(int[] temperatures)
         {
             int sum = 0;
